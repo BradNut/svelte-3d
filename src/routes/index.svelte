@@ -1,40 +1,38 @@
 <script>
-  import { fly } from 'svelte/transition';
-  import Star from '$lib/Star.svelte'
+  import { onMount } from 'svelte';
+  import * as SC from 'svelte-cubed';
+  import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
+  import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+  import typeface from '@compai/font-mako/data/typefaces/mako-normal-400.json';
 
-  let isStar = false;
+  let font;
+  let text = "Level Up";
+  let loader = new FontLoader();
 
-  function hitButton() {
-    isStar = true;
-    setTimeout(() => {
-      isStar = false;
-    }, 40);
-  }
+  onMount(() => {
+    font = loader.parse(typeface);
+  })
 </script>
 
-<header>
-  <h1>Star World</h1>
-</header>
+<SC.Canvas alpha>
+  <SC.Mesh
+    geometry={ new TextGeometry(text, {
+      font,
+      size: 5,
+      height: 10
+    }) }
+  />
+  <SC.PerspectiveCamera position={[ 10, 0, 100 ]} />
+  <SC.OrbitControls />
+</SC.Canvas>
 
-<div style:position="relative">
-  {#if isStar}
-    <div class="star" out:fly={{ opacity: 0, y: -100, duration: 3000 }}>
-      <Star />
-    </div>
-  {/if}
-  <button on:click={hitButton}>Level Up</button>
-</div>
+<input type="text" bind:value={text} />
 
 <style>
-  header {
-    display: flex;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 60px;
-  }
-
-  .star {
+  input { 
     position: absolute;
-    top: -30px;
-    z-index: -1;
+    top: 0;
+    left: 0;
+    z-index: 10;
   }
 </style>
