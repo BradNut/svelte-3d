@@ -20,10 +20,22 @@
       metalness: 0.7,
     })}
   />
+  <SC.Group position={[ 0, -2, 0 ]}>
+    <SC.Mesh
+      geometry={new THREE.PlaneGeometry(100,100)}
+      material={new THREE.MeshStandardMaterial({ color: 'grey' })}
+      rotation={[-Math.PI / 2, 0, 0]}
+    />
+    <SC.Primitive
+      position={[ 0, 0.001, 0]}
+      object={new THREE.GridHelper(100, 100, 0x444444, 0x555555)}
+    />
+  </SC.Group>
   <SC.PerspectiveCamera position={[3, 3, 3]} />
   <SC.OrbitControls />
   <SC.AmbientLight intensity={1} />
-  <SC.DirectionalLight intensity={0.5} position={[-3, 5, 7]} />
+  <SC.DirectionalLight intensity={0.7} />
+  <SC.PointLight intensity={1} position={[2, 5, 2]} />
 </SC.Canvas>
 
 <style>
