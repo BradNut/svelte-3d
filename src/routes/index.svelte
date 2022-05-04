@@ -1,50 +1,40 @@
 <script>
-  import * as THREE from 'three';
-  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-  import * as SC from 'svelte-cubed';
-  let star;
-  let rotation = 0;
+  import { fly } from 'svelte/transition';
+  import Star from '$lib/Star.svelte'
 
-  let loader = new GLTFLoader();
-  loader.load('star.gltf', (gltf) => {
-    star = gltf.scene.children[0].geometry;
-  });
+  let isStar = false;
 
-  SC.onFrame(() => {
-    rotation += 0.01
-  })
+  function hitButton() {
+    isStar = true;
+    setTimeout(() => {
+      isStar = false;
+    }, 40);
+  }
 </script>
 
 <header>
-  <div class="star-container">
-    <SC.Canvas antialias alpha>
-      <SC.Mesh
-        geometry={star}
-        rotation={[-90, 0, rotation]}
-        material={new THREE.MeshStandardMaterial({
-          color: 0xffff00,
-          roughness: 0,
-          metalness: 0.7,
-        })}
-      />
-      <SC.PerspectiveCamera position={[3, 1, 3]} />
-      <SC.AmbientLight intensity={1} />
-      <SC.DirectionalLight intensity={0.7} />
-      <SC.PointLight intensity={1} position={[2, 5, 2]} />
-    </SC.Canvas>
-  </div>
   <h1>Star World</h1>
 </header>
+
+<div style:position="relative">
+  {#if isStar}
+    <div class="star" out:fly={{ opacity: 0, y: -100, duration: 3000 }}>
+      <Star />
+    </div>
+  {/if}
+  <button on:click={hitButton}>Level Up</button>
+</div>
 
 <style>
   header {
     display: flex;
     font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 60px;
   }
 
-  .star-container {
-    position: relative;
-    width: 100px;
-    height: 100px;
+  .star {
+    position: absolute;
+    top: -30px;
+    z-index: -1;
   }
 </style>
