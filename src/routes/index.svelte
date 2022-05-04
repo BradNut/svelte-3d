@@ -15,39 +15,36 @@
   })
 </script>
 
-<SC.Canvas antialias alpha shadows>
-  <SC.Mesh
-    geometry={star}
-    rotation={[-90, 0, rotation]}
-    material={new THREE.MeshStandardMaterial({
-      color: 0xffff00,
-      roughness: 0,
-      metalness: 0.7,
-    })}
-    castShadow
-  />
-  <SC.Group position={[ 0, -2, 0 ]}>
-    <SC.Mesh
-      receiveShadow
-      geometry={new THREE.PlaneGeometry(100,100)}
-      material={new THREE.MeshStandardMaterial({ color: 'grey' })}
-      rotation={[-Math.PI / 2, 0, 0]}
-    />
-    <SC.Primitive
-      position={[ 0, 0.001, 0]}
-      object={new THREE.GridHelper(100, 100, 0x444444, 0x555555)}
-    />
-  </SC.Group>
-  <SC.PerspectiveCamera position={[3, 1, 3]} />
-  <SC.OrbitControls />
-  <SC.AmbientLight intensity={1} />
-  <SC.DirectionalLight shadow={{ mapSize: [ 2048, 2048 ] }} intensity={0.7} />
-  <SC.PointLight intensity={1} position={[2, 5, 2]} />
-</SC.Canvas>
+<header>
+  <div class="star-container">
+    <SC.Canvas antialias alpha>
+      <SC.Mesh
+        geometry={star}
+        rotation={[-90, 0, rotation]}
+        material={new THREE.MeshStandardMaterial({
+          color: 0xffff00,
+          roughness: 0,
+          metalness: 0.7,
+        })}
+      />
+      <SC.PerspectiveCamera position={[3, 1, 3]} />
+      <SC.AmbientLight intensity={1} />
+      <SC.DirectionalLight intensity={0.7} />
+      <SC.PointLight intensity={1} position={[2, 5, 2]} />
+    </SC.Canvas>
+  </div>
+  <h1>Star World</h1>
+</header>
 
 <style>
-  .controls {
-    position: absolute;
-    z-index: 10;
+  header {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .star-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
   }
 </style>
