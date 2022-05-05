@@ -6,7 +6,7 @@
   import typeface from '@compai/font-mako/data/typefaces/mako-normal-400.json';
 
   let font;
-  let text = "Level Up";
+  let text = "Test me out!!";
   let loader = new FontLoader();
 
   onMount(() => {
@@ -22,17 +22,20 @@
       height: 10
     }) }
   />
-  <SC.PerspectiveCamera position={[ 10, 0, 100 ]} />
+  <SC.PerspectiveCamera position={[ 50, 50, 150 ]} />
   <SC.OrbitControls />
 </SC.Canvas>
 
-<input type="text" bind:value={text} />
+<label for="3DText">
+  Enter text:
+  <input id="3DText" name="3DText" type="text" bind:value={text} />
+</label>
 
 <style>
-  input { 
+  label {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 20%;
+    right: 50%;
     z-index: 10;
   }
 </style>

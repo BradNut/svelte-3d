@@ -36,7 +36,7 @@
       position={[Math.floor(index / rows), contribution / 2, index % rows]}
     />
   {/each}
-  <SC.PerspectiveCamera position={[15, 15, 15]} />
+  <SC.PerspectiveCamera position={[20, 20, 50]} />
   <SC.OrbitControls />
   <SC.AmbientLight intensity={0.5} />
   <SC.DirectionalLight intensity={1} position={[3, 5, -4]} />
@@ -45,6 +45,16 @@
 <style>
   .controls {
     position: absolute;
+    bottom: 0;
+    margin: 1rem;
     z-index: 10;
+  }
+
+  button {
+    border-radius: 10px;
+    background: aqua;
+    border: none;
+    padding: 1rem;
+    text-transform: uppercase;
   }
 </style>

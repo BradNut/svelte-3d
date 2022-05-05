@@ -27,16 +27,19 @@ x<script>
 </SC.Canvas>
 
 <div class="controls">
+  <h1>Rotation Controls:</h1>
   <label for="x">X: <input id="x" name="x" type="range" bind:value={x} min={0} max={5} step={0.01} /></label>
   <label for="y">Y: <input id="y" name="y" type="range" bind:value={y} min={0} max={5} step={0.01} /></label>
   <label for="z">Z: <input id="z" name="z" type="range" bind:value={z} min={0} max={5} step={0.01} /></label>
 </div>
 
 <style>
-  .controls { 
+  .controls {
+    display: grid;
+    gap: 1rem;
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: 0%;
+    margin: 1rem;
     z-index: 10;
   }
 </style>

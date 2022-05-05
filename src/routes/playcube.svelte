@@ -17,14 +17,15 @@
 <svelte:window on:click={() => { isActive = !isActive }} />
 
 <div class="controls">
-  <label>Width: 
-    <input type="range" min={0.1} max={3} step={0.1} bind:value={width} />
+  <h1>Modify Cube Size:</h1>
+  <label for="width">Width:
+    <input id="width" name="width" type="range" min={0.1} max={3} step={0.1} bind:value={width} />
   </label>
-  <label>Height: 
-    <input type="range" min={0.1} max={3} step={0.1} bind:value={height} />
+  <label for="height">Height:
+    <input id="height" name="height" type="range" min={0.1} max={3} step={0.1} bind:value={height} />
   </label>
-  <label>Depth: 
-    <input type="range" min={0.1} max={3} step={0.1} bind:value={depth} />
+  <label for="depth">Depth:
+    <input id="depth" name="depth" type="range" min={0.1} max={3} step={0.1} bind:value={depth} />
   </label>
 </div>
 
@@ -44,10 +45,17 @@
 
 <style>
   .controls {
+    display: grid;
+    gap: 2rem;
+    bottom: 0;
+    margin: 2rem;
     position: absolute;
     z-index: 10;
   }
   label {
-    display: block;
+    font-size: var(--bodyTextSize);
+    display: flex;
+    place-content: center;
+    place-items: center;
   }
 </style>

@@ -1,0 +1,22 @@
+:root {
+  --dark: #000000;
+
+  --headingFont: Arial, Helvetica, sans-serif;
+  --bodyFont: Arial, Helvetica, sans-serif;
+  --baseFontSize: 100%;
+  --h1: 3.052rem;
+  --h2: 2.441rem;
+  --h3: 1.953rem;
+  --h4: 1.563rem;
+  --h5: 1.25rem;
+  --h6: 1.8rem;
+  --bodyTextSize: 1.8rem;
+  --smallText: 1.44rem;
+  --lineHeight: 1.75;
+}
+
+#svelte {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
