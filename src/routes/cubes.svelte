@@ -9,6 +9,10 @@
 
 <svelte:window on:click={() => count += 1} />
 
+<div class="instructions">
+  <h2>Click around to add cubes</h2>
+</div>
+
 <PE.World gravity={[0, -9.8 ,0]}>
   <SC.Canvas antialias shadows>
     <PE.Body mass={0} rotation={[-Math.PI / 2, 0, 0]}>
@@ -29,3 +33,14 @@
     <SC.OrbitControls />
   </SC.Canvas>
 </PE.World>
+
+<style>
+  .instructions {
+    position: absolute;
+    top: 5%;
+    left: 40%;
+    z-index: 10;
+    color: white;
+    font-size: 2rem;
+  }
+</style>
