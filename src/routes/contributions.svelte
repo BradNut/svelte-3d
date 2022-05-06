@@ -22,6 +22,7 @@
 </script>
 
 <div class="controls">
+  <h1>Refresh render here</h1>
   <button on:click={refresh}>Refresh</button>
 </div>
 

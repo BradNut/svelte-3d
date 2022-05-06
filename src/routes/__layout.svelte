@@ -3,7 +3,7 @@
 </script>
 
 <header>
-  <h1>Svelte 3D</h1>
+  <h1><a href="/">Svelte 3D</a></h1>
   <nav>
     <a href="/cubes">Cubes</a>
     <a href="/star-canvas">Rotating Star</a>
